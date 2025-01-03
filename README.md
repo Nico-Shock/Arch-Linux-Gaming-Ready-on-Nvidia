@@ -492,7 +492,7 @@ Only install `gdm-settings` if you using gdm.
 ## Install CachyOS Kernel Manager & Other Things
 
 ```
-sudo pacman -S cachyos-kernel-manager cachyos-gaming-meta cachyos-settings
+sudo pacman -S cachyos-kernel-manager cachyos-gaming-meta cachyos-settings linux-cachyos-nvidia-open
 ```
 
 ### Launch the CachyOS Kernel Manager
