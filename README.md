@@ -511,7 +511,7 @@ linux /vmlinuz-linux-cachyos-rc
 initrd /initramfs-linux-cachyos-rc.img
 ```
 Change the lines in the config to match and boot into the new kernel you installed.  
-Make sure you don't need to install the `linux-cachyos linux-cachyos-headers linux-cachyos-nvidia-open` packages manually because they will be installed automatically for the kernel you installed.
+Make sure you don't need to install the `linux-cachyos linux-cachyos-headers` packages manually because they will be installed automatically for the kernel you installed.
 
 ## **NEVER RUN**: `sudo pacman -Syuu`  
 **Running this command will break your package manager.**  
