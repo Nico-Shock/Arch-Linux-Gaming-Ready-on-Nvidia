@@ -141,7 +141,7 @@ Enable your swap partition.
 ```
 mkfs.ext4 /dev/nvme0n1p3
 ```
-Format your root partition (20–40GB) to the Linux ext4 file system.
+Format your root partition to the Linux ext4 file system.
 
 ```
 mkfs.ext4 /dev/nvme0n1p4
