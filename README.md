@@ -40,9 +40,8 @@
 | **20** | [Install CachyOS Repos](#install-cachyos-repos) |
 | **21** | [Install yay and paru](#install-yay-and-paru) |
 | **22** | [Install Chaotic-AUR Repos](#install-chaotic-aur-repos) |
-| **23** | [Install more recommended software](#install-more-recommended-stuff-if-not-already-installed) |
-| **24** | [Install CachyOS Kernel Manager & Other Things](#install-cachyos-kernel-manager--other-things) |
-| **25** | [Change Bootloaderconfig](#change-bootloaderconfig) |
+| **23** | [Install CachyOS Kernel Manager & Other Things](#install-cachyos-kernel-manager--other-things) |
+| **24** | [Change Bootloaderconfig](#change-bootloaderconfig) |
 | **Optional:** | |
 | **1** | [Example for Gnome Theming](#theming-for-gnome) |
 | **2** | [Recommended for VMware](#recommended-for-vmware) |
@@ -481,13 +480,6 @@ to the bottom, like the other ones.
 ```
 sudo pacman -Sy
 ```
-
-## Install More Recommended Stuff (if not already installed)
-
-```
-yay -S ptyxis gnome-terminal gdm-settings
-```
-Only install `gdm-settings` if you using gdm.
 
 ## Install CachyOS Kernel Manager & Other Things
 
