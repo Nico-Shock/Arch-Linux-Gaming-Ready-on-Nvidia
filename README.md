@@ -44,7 +44,7 @@
 | **24** | [Change Bootloaderconfig](#change-bootloaderconfig) |
 | **25** | [Install Open Nvidia Drivers](#install-open-nvidia-driver-recommended) |
 | **26** | [Patch Pacman](#patch-pacman) |
-| **27** | [Patch Pacman](#make-your-system-more-stable) |
+| **27** | [Make Your System More Stable](#make-your-system-more-stable) |
 | **Optional:** | |
 | **1** | [Example for Gnome Theming](#theming-for-gnome) |
 | **2** | [Recommended for VMware](#recommended-for-vmware) |
