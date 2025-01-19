@@ -316,12 +316,6 @@ Name the title whatever you want, so you can replace "Arch Linux" with the name 
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme0n1p3) rw" >> /boot/loader/entries/arch.conf
 ```
 
-## Install Xorg
-
-```
-pacman -S xorg
-```
-
 ## Install a Desktop Environment
 
 ```
@@ -406,7 +400,6 @@ exit
 umount -R /mnt
 reboot
 ```
-Make sure that the step for installing the CachyOS kernel, which installs the `linux-cachyos-nvidia-open` package, also automatically installs the best NVIDIA drivers for your system.
 
 ## Change Keyboard Layout
 
@@ -492,6 +485,12 @@ sudo pacman -S cachyos-kernel-manager cachyos-gaming-meta cachyos-settings
 Select 'Configure' and under 'Options,' select the 'RC - Release Candidate,' then click on 'Build Kernel.' (Only if you do not have the latest RC kernel `linux-cachyos-rc`, or if you prefer to use a stable kernel with lower performance, you should use the `linux-cachyos` kernel.)  
 After that, execute the installation to install the kernel.
 
+## Install Open Nvidia Driver (Recommended)
+
+```
+sudo pacman -S linux-caachyos-nvidia-open
+```
+
 ## Change Bootloaderconfig
 
 ```
@@ -499,22 +498,23 @@ sudo nano /boot/loader/entries/arch.conf
 ```
 
 ```
-linux /vmlinuz-linux-cachyos-rc
-initrd /initramfs-linux-cachyos-rc.img
+linux /vmlinuz-linux-cachyos
+initrd /initramfs-linux-cachyos.img
 ```
 Change the lines in the config to match and boot into the new kernel you installed.  
-Make sure you don't need to install the `linux-cachyos linux-cachyos-headers linux-cachyos-nvidia-open` packages manually because they will be installed automatically for the kernel you installed.
 
-## **NEVER RUN**: `sudo pacman -Syuu`  
-**Running this command will break your package manager.**  
-**If you have already executed it, you can fix all issues by reinstalling the CachyOS repos again.**
+## Patch Pacman
+
+```
+sudo pacman -S pacman
+```
 
 ## Make Your System More Stable
 
 ```
 sudo pacman -Syuu
 ```
-Yes, you shoud run this command even if it says "do not."
+If you have problems or some annoying outputs every time you use the pacman command, you can try disabling the `core` repo in `/etc/pacman.conf` by commenting it out with a `#`.
 
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz
@@ -523,7 +523,7 @@ sudo ./cachyos-repo.sh
 cd ..
 sudo rm -r cachyos-repo.tar.xz cachyos-repo
 ```
-This will reinstall the CachyOS repos.
+If you break something, this will reinstall the CachyOS repos and should fix all pacman errors.
 
 ## Theming for Gnome
 
