@@ -29,8 +29,9 @@
 | **9** | [Install the Linux base system](#install-linux-base-system) |
 | **10** | [Access root system](#access-the-root-system) |
 | **11** | [Configure Arch system](#configure-arch-system) |
+| **11** | [Install Open Nvidia Drivers](#install-open-nvidia-driver-recommended) |
 | **12** | [Install bootloader](#install-bootloader) |
-| **13** | [Install Xorg](#install-xorg) |
+| **13** | [Patch Pacman](#patch-pacman) |
 | **14** | [Install a desktop environment](#install-a-desktop-environment) |
 | **15** | [Install Recommended and Required Software](#install-recommended-and-required-stuff) |
 | **16** | [Install NVIDIA drivers](#Install-nvidia-drivers-required-to-change-the-nvidia-driver-later) |
@@ -312,7 +313,7 @@ initrd /initramfs-linux.img
 ```
 Name the title whatever you want, so you can replace "Arch Linux" with the name you want in your bootloader menu.
 
-```
+```Install Open Nvidia Driver (Recommended)
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme0n1p3) rw" >> /boot/loader/entries/arch.conf
 ```
 
