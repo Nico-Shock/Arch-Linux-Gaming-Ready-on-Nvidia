@@ -246,7 +246,7 @@ ln -sf /usr/share/zoneinfo/
 Navigate to your timezone directory (e.g., `Europe/Berlin`) and link it:
 
 ```
-ln -sf /usr/share/zoneinfo/Europe/Berlin >> /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 ```
 
 ```
@@ -286,7 +286,7 @@ Set a password for your new user.
 nano /etc/sudoers
 ```
 Uncomment `%wheel ALL=(ALL) ALL`. (or just search for `# %`)
-Add `Defaults rootpw` to require the root password for sudo.
+**Optional:** Add `Defaults rootpw` to require the root password for sudo at the bottom of the file.
 
 ## Install Bootloader
 
@@ -294,7 +294,6 @@ Add `Defaults rootpw` to require the root password for sudo.
 exit
 systemctl daemon-reload
 arch-chroot /mnt
-mount -t efivarfs efivarfs /sys/firmware/efi/efivars/
 ```
 
 ```
@@ -314,6 +313,12 @@ linux /vmlinuz-linux
 initrd /initramfs-linux.img
 ```
 Name the title whatever you want, so you can replace "Arch Linux" with the name you want in your bootloader menu.
+
+```
+echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme0n1p3) rw" >> /boot/loader/entries/arch.conf
+```
+Make sure to specify the correct disk, such as `/dev/nvme0n1p3`, for your root or system partition.
+This adds your disk to your bootloader to boot Linux.
 
 ## Install a Desktop Environment
 
@@ -355,6 +360,16 @@ pacman -S ufw fzf python python-pip bluez blueman bluez-utils zram-generator fas
 systemctl enable bluetooth ufw preload
 ```
 You can only install `preload` after the installation of the Chaotic-AUR-Repos.
+
+```
+sudo ufw default deny
+```
+This will load default deny ufw settings.
+
+```
+sudo ufw allow ssh
+```
+If you need ssh, you can enable it with this command.
 
 ## Install NVIDIA Drivers (Required to change the NVIDIA driver later)
 
@@ -443,7 +458,7 @@ yay -S paru
 ## Install Chaotic-AUR-Repos
 
 ```
-sudo su
+sudo -i
 ```
 
 ```
@@ -487,7 +502,7 @@ After that, execute the installation to install the kernel.
 ## Install Open Nvidia Driver (Recommended)
 
 ```
-sudo pacman -S linux-caachyos-nvidia-open
+sudo pacman -S linux-cachyos-nvidia-open
 ```
 
 ## Change Bootloaderconfig
@@ -513,7 +528,7 @@ sudo pacman -S pacman
 ```
 sudo pacman -Syuu
 ```
-If you have problems or some annoying outputs every time you use the pacman command, you can try disabling the `core` repo in `/etc/pacman.conf` by commenting it out with a `#`.
+**Not really recommended:** If you have problems or some annoying outputs every time you use the pacman command, you can try disabling the `core` repo in `/etc/pacman.conf` by commenting it out with a `#`.
 
 ```
 wget https://mirror.cachyos.org/cachyos-repo.tar.xz
