@@ -588,16 +588,15 @@ sudo pacman -S zsh
 ```
 sudo nano ~/.zshrc
 ```
-Look for a theme, such as the [xiong-chiamiov-plus theme](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/xiong-chiamiov-plus.zsh-theme).
+Look for a theme, such as the [xiong-chiamiov-plus](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/xiong-chiamiov-plus.zsh-theme) theme.
 
-Alternatively, you can try the [bira theme](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/bira.zsh-theme).
+Alternatively, you can try the [bira](https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/bira.zsh-theme) theme.
 
-I mainly use the [powerlevel10k theme](https://github.com/romkatv/powerlevel10k).
+I mainly use the [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme.
 
 ```
 chsh -s $(which zsh)
 ```
-
 Make zsh your default terminal.
 
 ## Recommended for VMware:
