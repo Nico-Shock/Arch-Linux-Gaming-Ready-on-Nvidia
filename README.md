@@ -331,15 +331,7 @@ systemctl enable gdm
 ```
 Or you can use only `gnome` as a package to install everything Gnome has. The example here is for a minimalistic build to create your own system without having lots of bloatware.
 
-Or for KDE Plasma:
-
-```
-pacman -S plasma konsole sddm
-```
-
-```
-systemctl enable sddm
-```
+### **There are many different desktop environments like `KDE Plasma` or `Cinnamon`. You can also use window managers like DWM, Hyprland, or i3, but these are for very experienced and advanced users. Additionally, you need slightly different installation steps for a window manager.**
 
 ## Install Recommended and Required Stuff
 
