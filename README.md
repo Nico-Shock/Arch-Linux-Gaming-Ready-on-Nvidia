@@ -3,7 +3,7 @@
 # Requirements
 
 1. **PC/Laptop**  
-2. **UEFI Firmware**  
+2. **UEFI Firmware is only recommendet**  
 3. **Disabled Secure Boot**  
 4. **A bootable USB stick with an ISO image**  
    - You can test the Arch Linux installation in a virtual machine.  
@@ -16,39 +16,43 @@
   
 ## **Please read and understand everything shown carefully before starting.**
 
+
 | Step | Action |
 |------|--------|
-| **1** | [Set up keyboard layout](#set-up-keyboard-layout) |
-| **2** | [Check if booted to UEFI](#check-if-booted-to-uefi) |
-| **3** | [Check internet connection](#check-internet-connection) |
-| **4** | [Connect to Wifi](#connect-to-wifi-if-used) |
-| **5** | [Get disk information](#get-disk-information) |
-| **6** | [Partition the disk](#partition-the-disk) |
-| **7** | [Format partitions](#format-the-partitions) |
-| **8** | [Mount partitions to install the Linux base system](#mount-the-partitions-to-install-linux-base-system) |
-| **9** | [Install the Linux base system](#install-linux-base-system) |
-| **10** | [Access root system](#access-the-root-system) |
-| **11** | [Install requirements](#install-requirements) |
-| **12** | [Configure Arch system](#configure-arch-system) |
-| **13** | [Install bootloader](#install-bootloader) |
-| **14** | [Install a desktop environment](#install-a-desktop-environment) |
-| **15** | [Install Recommended and Required Software](#install-recommended-and-required-stuff) |
-| **16** | [Install NVIDIA drivers](#Install-nvidia-drivers-required-to-change-the-nvidia-driver-later) |
-| **17** | [Reboot System](#reboot-system) |
-| **18** | [Change keyboard layout](#change-keyboard-layout) |
-| **19** | [Change Timezone](#change-timezone) |
-| **20** | [Install CachyOS Repos](#install-cachyos-repos) |
-| **21** | [Install yay and paru](#install-yay-and-paru) |
-| **22** | [Install Chaotic-AUR Repos](#install-chaotic-aur-repos) |
-| **23** | [Install CachyOS Kernel Manager & Other Things](#install-cachyos-kernel-manager--other-things) |
-| **24** | [Change Bootloaderconfig](#change-bootloaderconfig) |
-| **25** | [Install Open Nvidia Drivers](#install-open-nvidia-driver-recommended) |
-| **26** | [Patch Pacman](#patch-pacman) |
-| **27** | [Make Your System More Stable](#make-your-system-more-stable) |
+| **1** | [Set Up Keyboard Layout](#set-up-keyboard-layout) |
+| **2** | [Check if Booted to UEFI](#check-if-booted-to-uefi) |
+| **3** | [Check Internet Connection](#check-internet-connection) |
+| **4** | [Connect to Wifi (if used)](#connect-to-wifi-if-used) |
+| **5** | [Get Disk Information](#get-disk-information) |
+| **6** | [Partition the Disk](#partition-the-disk) |
+| **7** | [Format the Partitions](#format-the-partitions) |
+| **8** | [Mount the Partitions to Install Linux Base System](#mount-the-partitions-to-install-linux-base-system) |
+| **9** | [Make downloads faster](#make-downloads-faster) |
+| **10** | [Install the Linux Base System](#install-linux-base-system) |
+| **11** | [Setup swapfile](#setup-swapfile) |
+| **12** | [Access the Root System](#access-the-root-system) |
+| **13** | [Install Requirements](#install-requirements) |
+| **14** | [Configure Arch System](#configure-arch-system) |
+| **15** | [Install Bootloader](#install-bootloader) |
+| **16** | [Install a Desktop Environment](#install-a-desktop-environment) |
+| **17** | [Install Recommended and Required Stuff](#install-recommended-and-required-stuff) |
+| **18** | [Install NVIDIA Drivers (Required to change the NVIDIA driver later)](#install-nvidia-drivers-required-to-change-the-nvidia-driver-later) |
+| **19** | [Reboot System](#reboot-system) |
+| **20** | [Change Keyboard Layout](#change-keyboard-layout) |
+| **21** | [Change Timezone](#change-timezone) |
+| **22** | [Settings needed to Install the Open NVIDIA Drivers from CachyOS](#settings-needed-to-install-the-open-nvidia-drivers-from-cachyos) |
+| **23** | [Install CachyOS Repos](#install-cachyos-repos) |
+| **24** | [Install yay and paru](#install-yay-and-paru) |
+| **25** | [Install Chaotic-AUR Repos](#install-chaotic-aur-repos) |
+| **26** | [Install CachyOS Kernel Manager & Other Things](#install-cachyos-kernel-manager--other-things) |
+| **27** | [Install Open NVIDIA Driver (Recommended)](#install-open-nvidia-driver-recommended) |
+| **28** | [Change Bootloaderconfig](#change-bootloaderconfig) |
+| **29** | [Patch Pacman](#patch-pacman) |
+| **30** | [Make Your System More Stable](#make-your-system-more-stable) |
 | **Optional:** | |
-| **1** | [Example for Gnome Theming](#theming-for-gnome) |
-| **2** | [Recommended for VMware](#recommended-for-vmware) |
-| **3** | [Recommended for KVM](#recommended-for-kvm) |
+| **31** | [Example for Gnome Theming](#theming-for-gnome) |
+| **32** | [Recommended for VMware](#recommended-for-vmware) |
+| **33** | [Recommended for KVM](#recommended-for-kvm) |
 
 ## Set Up Keyboard Layout
 
@@ -114,67 +118,37 @@ This will use the `cfdisk` tool for easier partitioning of your disk.
 
 ### Disk Partitioning:
 - Select **gpt**.
-- Create a new partition with 2048M size and set the type to **EFI System**.
-- Create another partition with the size of half your RAM and set the type to **Linux Swap**.
-- Create a third partition of 20–40GB and set the type to **Linux root**.
+- Create a new partition with 2048M size and set the type to **EFI System**. If you using BIOS mode (lagacy csm mode) you need to set this optio nto biod boot.
 - Use the remaining available space to create a final partition, leaving the type as default.
-
-*You don't need to create a separate root partition for your system. This is only necessary for additional security, but it's not really required. However, if you plan to install more apps, resizing the partition will be necessary — though this is not needed if you choose not to create a separate root partition.*
-
-*And you don't need a swap partition, it's only useful as temporary memory/space. It's useful as RAM if you are out of RAM because when your RAM is full, it can be used as RAM so your system doesn't crash. The same goes for it being used as a backup so you don't lose your work after crashes. Overall, if something crashes, you can restore it when it's stored in the swap partition, and you can use it as "backup" RAM.*
 
 ## Format the Partitions
 
 ```
 mkfs.fat -F32 /dev/nvme0n1p1
 ```
-Format the EFI partition to FAT32.
+Format the EFI/Boot partition to FAT32.
 
 ```
-mkswap /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p2
 ```
-Format your swap partition.
-
-```
-swapon /dev/nvme0n1p2
-```
-Enable your swap partition.
-
-```
-mkfs.ext4 /dev/nvme0n1p3
-```
-Format your root partition to the Linux ext4 file system.
-
-```
-mkfs.ext4 /dev/nvme0n1p4
-```
-Format your home partition to the Linux ext4 file system.
+Format your Linux filesystem partition to the Linux ext4 file system.
 
 ## Mount the Partitions to Install Linux Base System
 
 ```
-mount /dev/nvme0n1p3 /mnt
+mount /dev/nvme0n1p2 /mnt
 ```
-
-Mount your root partition to `/mnt`.
+Mount your Linux filesystem partition to `/mnt`.
 
 ```
 mkdir /mnt/boot
-mkdir /mnt/home
 ```
-
-Create directories for your bootloader and home partition.
+Create a directory for your bootloader.
 
 ```
 mount /dev/nvme0n1p1 /mnt/boot
 ```
-
-Mount the EFI partition to `/boot`.
-
-```
-mount /dev/nvme0n1p4 /mnt/home
-```
-Mount your home directory.
+Mount the EFI/Boot partition to `/boot`.
 
 ## Make downloads faster
 
@@ -194,6 +168,34 @@ Install the base Linux system to your root directory.
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 Generate an `fstab` file.
+
+## Setup swapfile
+
+```
+fallocate -l 4G /mnt/swapfile
+```
+Set your size and directory of your swap file.
+
+```
+chmod 600 /mnt/swapfile
+```
+Make your swap file only accessible by root for security reasons.
+
+```
+mkswap /mnt/swapfile
+```
+Format the swap file to the swap file system.
+
+```
+swapon /mnt/swapfile
+```
+Enable the swap file system.
+
+```
+nano /mnt/etc/fstab
+```
+
+-> you need to add `/swapfile none swap defaults 0 0` into that config, you can name it with `# swapfile` on a line above it if you want.
 
 ## Access the Root System
 
@@ -620,5 +622,4 @@ sudo pacman -S spice-vdagent
 sudo systemctl enable spice-vdagentd
 sudo systemctl start spice-vdagentd
 ```
-
 ### *Make sure the theming steps are only examples of how I would theme my Linux on Gnome. You can customize it infinitely.*
